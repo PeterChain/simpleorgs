@@ -1,0 +1,22 @@
+body {
+    background-color: #fefefe;
+}
+
+h1, h2, h3 {
+    color: #0d8214;
+    font-family: Arial, Helvetica, sans-serif, monospace;
+}
+
+.header {
+    border-bottom: 1px solid #2ea823;
+    background-color: white;
+}
+
+.round-pic {
+    border-radius: 50%;
+}
+
+.round-pic .orange {
+    border: 1px solid orange;
+}
+

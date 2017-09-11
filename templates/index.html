@@ -1,0 +1,44 @@
+{% load i18n %}
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple organizations</title>
+        <meta name="description" content="{% trans "Simple organizations" %}">
+
+        <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/app.css' %}">
+        <link rel="stylesheet" href="{% static 'css/simpleorgs.css' %}">
+    </head>
+    <body>
+        <!-- Header -->
+        <div class="top-bar">
+            <!-- Logo  -->
+            <div class="top-left-bar">
+                <h2>Simple Organizations</h2>
+            </div>
+
+            <div class="top-right-bar">
+                <ul class="dropdown menu" data-dropdown-menu>
+                    <li>
+                        <a href="#0">{% trans "Messages" %}</a>
+                    </li>
+                    <li class="has-submenu">
+                        <span{% trans "Hi, John Doe" %}</span>
+                        <img src="http://www.cadouricraiova.ro/assets/images/avtar.png" class="round-pic orange"/>
+                        <ul class="submenu menu vertical" data-submenu>
+                            <li><a href="#0">{% trans "My settings" %}</a></li>
+                            <li><a href="#0">{% trans "Logout" %}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+
+        <script type='text/javascript' src="{% static 'js/jquery.js' %}"></script>
+        <script type='text/javascript' src="{% static 'js/foundation.min.js' %}"></script>
+        <script type='text/javascript' src="{% static 'js/what-input.js' %}"></script>
+    </body>
+</html>

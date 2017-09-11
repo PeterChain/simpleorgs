@@ -1,0 +1,58 @@
+LINUX-ENV
+ENV
+DEV
+EVENT
+popup
+syntax: glob
+*.pyc
+._*
+.#*
+#*#
+.DS_Store
+images
+media
+local_settings.py
+*.mo
+*.codekit
+*.map
+.sass-cache/
+.coverage
+visual_art
+wag-labels
+useful
+archive
+renders
+*~
+.*.sw*
+.Python
+.vagrant/
+renders
+.pip-download-cache
+*-auto-bak-*.pgdump
+
+# And ignore any TSV anywhere, used in data import
+*.tsv
+keys
+*.sql
+dump.rdb
+build
+
+# Eclipse metadata
+.project
+.pydevproject
+.settings
+dbbaks
+
+selenium-server-standalone*jar
+ingest
+
+# PyCharm metadata
+.idea
+
+# VS Code metadata
+.vscode
+
+*.pgdump
+db.sqlite3
+
+__pycache__/

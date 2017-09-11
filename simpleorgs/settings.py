@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -37,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'apps.address',
+    'apps.main'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,12 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'django.template.loaders.eggs.Loader',
+            ],
+            'debug': DEBUG,
         },
     },
 ]
@@ -122,3 +130,24 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(SITE_ROOT, 'static', 'css'),
+    os.path.join(SITE_ROOT, 'static', 'downloads'),
+    os.path.join(SITE_ROOT, 'static', 'fonts'),
+    os.path.join(SITE_ROOT, 'static', 'images'),
+    os.path.join(SITE_ROOT, 'static', 'js'),
+]
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
+TESTING = False
+
+# Pull slug max_length out ot
+SLUG_MAX_LENGTH = 64
