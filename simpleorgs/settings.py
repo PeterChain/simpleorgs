@@ -68,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.csrf'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -78,6 +80,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'simpleorgs.wsgi.application'
 
@@ -132,17 +135,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(SITE_ROOT, 'static', 'css'),
-    os.path.join(SITE_ROOT, 'static', 'downloads'),
-    os.path.join(SITE_ROOT, 'static', 'fonts'),
-    os.path.join(SITE_ROOT, 'static', 'images'),
-    os.path.join(SITE_ROOT, 'static', 'js'),
+    os.path.join(BASE_DIR, 'static')
 ]
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 COMPRESS_ENABLED = True

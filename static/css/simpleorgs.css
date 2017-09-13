@@ -1,5 +1,5 @@
 body {
-    background-color: #fefefe;
+    background-color: #fdfdfd;
 }
 
 h1, h2, h3 {
@@ -7,16 +7,35 @@ h1, h2, h3 {
     font-family: Arial, Helvetica, sans-serif, monospace;
 }
 
-.header {
+.top-bar {
     border-bottom: 1px solid #2ea823;
     background-color: white;
 }
 
-.round-pic {
-    border-radius: 50%;
+.top-bar .menu {
+    background-color: white;
 }
 
-.round-pic .orange {
-    border: 1px solid orange;
+.menu {
+    height: 32px;
+    max-height: 32px
+}
+
+.top-bar-left h1, 
+.top-bar-left h2,
+.top-bar-left h3 {
+    padding-left: 10px;
+}
+
+.round-pic {
+    border: 2px solid black;
+    border-radius: 50%;
+    max-width: 32px;
+    max-height: 32px;
+}
+
+.pic-orange {
+    border: 2px solid orange !important;
+    color: orange;
 }
 
