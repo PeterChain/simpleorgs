@@ -46,12 +46,10 @@
             </div>
         </div>
         
-        <div class="row">
-            <br/>
-            <div class="row large-8 offset-large-2">
-                {% block content %}
-                {% endblock %}
-            </div>
+        <br/>
+        <div class="grid-container">
+            {% block content %}
+            {% endblock %}
         </div>
 
         <script type='text/javascript' src="{% static 'js/vendor/jquery.js' %}"></script>

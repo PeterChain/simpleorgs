@@ -1,5 +1,5 @@
 body {
-    background-color: #fdfdfd;
+    background-color: #fcfcfc;
 }
 
 h1, h2, h3 {
@@ -48,7 +48,28 @@ h1, h2, h3 {
 }
 
 .panel {
-    border: 1px solid #1E6E16;
+    border: 1px solid #728272;
     background-color: white;
+    border-radius: 5px;
+    padding: 5px;
 }
 
+.panel h1, .panel h2,
+.panel h3, .panel h4 {
+    color: #939393;
+}
+
+.tile {
+    border: 1px solid #27931C;
+    border-radius: 3px;
+    background-color: #4AB044;
+    background: linear-gradient(#E3F8E2, #D4F1D2);
+    min-height: 60px;
+    max-height: 60px;
+    color: #444444;
+}
+
+.tile-name {
+    font-size: 16px;
+    padding: 3px;
+}
