@@ -69,7 +69,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'django.template.context_processors.csrf'
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.media'
             ],
             'loaders': [
                 'django.template.loaders.filesystem.Loader',
@@ -142,6 +143,8 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+MEDIA_URL = 'media/'
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True

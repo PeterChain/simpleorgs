@@ -10,6 +10,7 @@ class MemberStatus(models.Model):
     status_code = models.CharField(max_length=3)
     status_text = models.CharField(max_length=80)
 
+
 class Member(models.Model):
     """
     Member of the organization
@@ -27,6 +28,8 @@ class Member(models.Model):
                                         on_delete=models.CASCADE,
                                         null=True)
     status = models.CharField(max_length=3, blank=True)
+    picture = models.ImageField(upload_to='profiles')
+
 
 class MemberEmploymentHistory(models.Model):
     """

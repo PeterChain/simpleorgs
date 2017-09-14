@@ -8,7 +8,7 @@ h1, h2, h3 {
 }
 
 .top-bar {
-    border-bottom: 1px solid #2ea823;
+    border-bottom: 1px solid #1E6E16;
     background-color: white;
 }
 
@@ -16,26 +16,39 @@ h1, h2, h3 {
     background-color: white;
 }
 
-.menu {
-    height: 32px;
-    max-height: 32px
-}
-
-.top-bar-left h1, 
-.top-bar-left h2,
-.top-bar-left h3 {
-    padding-left: 10px;
-}
-
 .round-pic {
     border: 2px solid black;
     border-radius: 50%;
-    max-width: 32px;
-    max-height: 32px;
+    max-width: 40px;
+    max-height: 40px;
+    cursor: pointer;
+}
+
+.basic-menu a {
+    color: #0d8214;
+    font-size: 14px;
+}
+
+.basic-menu a:hover {
+    color: #14DD20;
+    font-size: 14px;
+}
+
+.submenu {
+    margin-top: 15px;
+}
+
+.submenu li:hover {
+    background-color: #eeeeee;
 }
 
 .pic-orange {
-    border: 2px solid orange !important;
-    color: orange;
+    border: 2px solid #1E6E16 !important;
+    color: #0d8214;
+}
+
+.panel {
+    border: 1px solid #1E6E16;
+    background-color: white;
 }
 
