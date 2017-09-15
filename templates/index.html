@@ -6,13 +6,15 @@
             <h4>Member management</h4>
         </div>
         <div class="grid-x grid-margin-x large-10 large-offset-1">
-            <div class="large-2 medium-2 small-12 cell tile">
-                <div class="tile-name">
-                    New member
-                </div>
-            </div>
-            <div class="large-2 medium-2 small-12 cell tile">a</div>
-            <div class="large-2 medium-2 small-12 cell tile">a</div>
+
+            {% trans "New members" as new_members %}
+            {% include "partials/tile_2.html" with url="#0" icon="pe-7s-add-user" title=new_members %}
+
+            {% trans "Members List" as members_list %}
+            {% include "partials/tile_2.html" with url="#0" icon="pe-7s-users" title=members_list %}
+
+            {% include "partials/tile_2.html" with url="#0" icon="pe-7s-add-user" title="New members" %}
+
         </div>
     </div>
 {% endblock %}
