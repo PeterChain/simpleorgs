@@ -1,20 +1,28 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
     <div class="grid-x panel">
-        <div class="large-8 large-offset-2 cell">
-            <h4>Member management</h4>
+        <div class="large-8 large-offset-1 cell">
+            <h4>{% trans "Member management" %}</h4>
+            <hr/>
         </div>
         <div class="grid-x grid-margin-x large-10 large-offset-1">
-
-            {% trans "New members" as new_members %}
-            {% include "partials/tile_2.html" with url="#0" icon="pe-7s-add-user" title=new_members %}
-
-            {% trans "Members List" as members_list %}
-            {% include "partials/tile_2.html" with url="#0" icon="pe-7s-users" title=members_list %}
-
-            {% include "partials/tile_2.html" with url="#0" icon="pe-7s-add-user" title="New members" %}
-
+            {% for entry in member_nav %}
+                {% include "partials/tile_2.html" with url=entry.url icon=entry.icon title=entry.title %}
+            {% endfor %}
         </div>
+
+        <div class="large-8 large-offset-1 cell panel-area">
+            <h4>{% trans "Events organization" %}</h4>
+            <hr/>
+        </div>
+        <div class="grid-x grid-margin-x large-10 large-offset-1 ">
+            {% for entry in events_nav %}
+                {% include "partials/tile_2.html" with url=entry.url icon=entry.icon title=entry.title %}
+            {% endfor %}
+        </div>
+
+        
     </div>
 {% endblock %}
