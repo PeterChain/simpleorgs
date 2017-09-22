@@ -1,9 +1,8 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import TemplateView, DetailView, CreateView
+from django.views.generic import TemplateView
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Member
 from utils.navigation import Navigation
 
 
@@ -24,15 +23,4 @@ class Homepage(TemplateView):
         context['member_nav'] = navigation.get_member_nav()
         return context
 
-class MemberCreate(CreateView):
-    model = Member
-    template_name = 'member/newmember.html'
-
-
-class MemberDetail(DetailView):
-    """
-    View for displaying a member
-    """
-    template_name = 'member/memberdetail.html'
-    model = Member
 
