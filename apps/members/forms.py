@@ -7,4 +7,6 @@ class MemberForm(ModelForm):
     """
     Model form for Member general information model
     """
-    model = Member
+    class Meta:
+        model = Member
+        exclude = ('slug', 'address_book')

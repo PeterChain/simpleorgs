@@ -60,6 +60,13 @@ h1, h2, h3 {
     padding: 5px;
 }
 
+.light-panel {
+    border: 1px solid #CECECE;
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px;
+}
+
 .panel h1, .panel h2,
 .panel h3, .panel h4 {
     color: #939393;

@@ -1,5 +1,6 @@
 from django.db import models
 
+from django_countries.fields import CountryField
 
 from apps.address.models import AddressBook
 
@@ -20,6 +21,7 @@ class Member(models.Model):
     name = models.CharField(max_length=45, blank=False)
     middle_name = models.CharField(max_length=45, blank=True)
     surname = models.CharField(max_length=45, blank=False)
+    nationality = CountryField()
     date_of_birth = models.DateField(auto_now=False, blank=True)
     email = models.CharField(max_length=120, blank=False)
     telephone = models.CharField(max_length=20, blank=True)
