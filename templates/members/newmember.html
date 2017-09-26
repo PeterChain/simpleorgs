@@ -54,8 +54,32 @@
                 </h5>
             </p>
             <p>
-                <label>Input Label
-                    <input type="text" />
+                <label>{% trans "Phone number" %}
+                    {{ form.telephone }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "E-mail" %}
+                    {{ form.email }}
+                </label>
+            </p>
+        </div>
+
+        <!-- Address -->
+        <div class="large-6 medium-6 small-12 cell">
+            <p class="text-center">
+                <h5 class="subheader">
+                    {% trans "Address" %}
+                </h5>
+            </p>
+            <p>
+                <label>{% trans "Phone number" %}
+                    {{ form.telephone }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "E-mail" %}
+                    {{ form.email }}
                 </label>
             </p>
         </div>
