@@ -18,9 +18,8 @@ class Member(models.Model):
     Member of the organization
     """
     member_no = models.CharField(max_length=5, blank=True, unique=True)
-    name = models.CharField(max_length=45, blank=False)
-    middle_name = models.CharField(max_length=45, blank=True)
-    surname = models.CharField(max_length=45, blank=False)
+    name = models.CharField(max_length=80, blank=False)
+    surname = models.CharField(max_length=80, blank=False)
     nationality = CountryField()
     date_of_birth = models.DateField(auto_now=False, blank=True)
     email = models.CharField(max_length=120, blank=False)

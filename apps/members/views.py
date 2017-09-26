@@ -2,12 +2,14 @@ from django.shortcuts import render
 from django.views.generic import DetailView, CreateView
 
 from .models import Member
-from .forms import MemberForm
+from .forms import NewMemberForm
 
 
 class MemberCreate(CreateView):
-    form_class = MemberForm
+    form_class = NewMemberForm
     template_name = 'members/newmember.html'
+
+    
 
 
 class MemberDetail(DetailView):

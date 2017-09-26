@@ -1,5 +1,7 @@
 from django.db import models
 
+from django_countries.fields import CountryField
+
 
 class AddressBook(models.Model):
     """
@@ -18,5 +20,5 @@ class Address(models.Model):
     postal_code = models.CharField(max_length=20, blank=True)
     city = models.CharField(max_length=80)
     state = models.CharField(max_length=80, blank=True)
-    country = models.CharField(max_length=2)
+    country = CountryField(blank=True)
     address_book = models.ForeignKey('AddressBook', null=True, related_name='addresses')

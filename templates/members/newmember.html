@@ -27,21 +27,25 @@
                 <label>{% trans "Name" %}
                     {{ form.name }}
                 </label>
-
-                <label>{% trans "Middle name" %}
-                    {{ form.middle_name }}
-                </label>
-
+            </p>
+            <p>
                 <label>{% trans "Surname" %}
                     {{ form.surname }}
                 </label>
-
+            </p>
+            <p>
                 <label>{% trans "Date of birth" %}
                     {{ form.date_of_birth }}
                 </label>
-
+            </p>
+            <p>
                 <label>{% trans "Nationality" %}
                     {{ form.nationality }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "Profile picture" %}
+                    {{ form.picture }}
                 </label>
             </p>
         </div>
@@ -73,15 +77,54 @@
                 </h5>
             </p>
             <p>
-                <label>{% trans "Phone number" %}
-                    {{ form.telephone }}
+                <label>{% trans "Street" %}
+                    {{ form.street }}
                 </label>
             </p>
             <p>
-                <label>{% trans "E-mail" %}
-                    {{ form.email }}
+                <label>{% trans "House No." %}
+                    {{ form.house_no }}
                 </label>
             </p>
+            <p>
+                <label>{% trans "City" %}
+                    {{ form.house_no }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "State/District" %}
+                    {{ form.state }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "Country" %}
+                    {{ form.country }}
+                </label>
+            </p>
+        </div>
+
+        <!-- Administrative tasks -->
+        <div class="large-6 medium-6 small-12 cell">
+            <p class="text-center">
+                <h5 class="subheader">
+                    {% trans "Administration" %}
+                </h5>
+            </p>
+            <p>
+                <label>{% trans "Create user?" %}
+                    {{ form.generate_user }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "Member No." %}
+                    {{ form.member_no }}
+                </label>
+            </p>
+            <p>
+                    <label>{% trans "Member Status" %}
+                        {{ form.status }}
+                    </label>
+                </p>
         </div>
     </div>
 </form>
