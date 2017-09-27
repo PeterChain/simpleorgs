@@ -31,7 +31,7 @@ class NewMemberForm(forms.Form):
     member_no = models.CharField(max_length=5)
     generate_user = models.BooleanField(default="X")
 
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(NewMemberForm, self).__init__(*args, **kwargs)
 
         self.fields['status'] = Member.status.all()
