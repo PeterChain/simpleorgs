@@ -21,15 +21,14 @@ class MemberCreate(FormView):
         initial = super(MemberCreate, self).get_initial()
 
         # Prepopulate member's status
-        """
-        statuses = MemberStatus.objects.all()
+        statuses = MemberStatus.objects.filter(initial_status=True)
         statuses_choices = []
         for status in statuses:
             statuses_choices.append(
                 (status.status_code, status.status_text)
             )
         initial['status'] = ChoiceField(choices=statuses_choices)
-        """
+
         return initial
 
 

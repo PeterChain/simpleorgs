@@ -19,6 +19,14 @@ h1, h2, h3 {
     background-color: white;
 }
 
+.primary {
+    background-color: #00B300 !important;
+}
+
+.primary:hover {
+    background-color: #018F01 !important;
+}
+
 .round-pic {
     border: 2px solid black;
     border-radius: 50%;
@@ -91,4 +99,3 @@ h1, h2, h3 {
 .tile:hover {
     background: linear-gradient(#00C300, #00AD00);
 }
-

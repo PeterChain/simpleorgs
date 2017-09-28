@@ -11,6 +11,7 @@ class MemberStatus(models.Model):
     """
     status_code = models.CharField(max_length=3)
     status_text = models.CharField(max_length=80)
+    initial_status = models.BooleanField(default=True)
 
 
 class Member(models.Model):

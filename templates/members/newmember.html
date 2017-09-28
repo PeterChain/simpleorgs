@@ -121,10 +121,17 @@
                 </label>
             </p>
             <p>
-                    <label>{% trans "Member Status" %}
-                        {{ form.status }}
-                    </label>
-                </p>
+                <label>{% trans "Member Status" %}
+                    {{ form.status }}
+                </label>
+            </p>
+        </div>
+
+        <div class="large-8 large-offset-2 medium-8 medium-offset-2 small-12 cell">
+            <div class=" button-group">
+                <button class="button rounded primary large">{% trans "Create" %}</button>
+                <button class="button rounded alert large">{% trans "Cancel" %}</button>
+            </div>
         </div>
     </div>
 </form>
