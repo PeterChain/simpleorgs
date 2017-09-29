@@ -32,4 +32,6 @@ class NewMemberForm(forms.Form):
     generate_user = forms.BooleanField()
 
     
+
+    
     

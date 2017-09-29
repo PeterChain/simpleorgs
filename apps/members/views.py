@@ -27,10 +27,12 @@ class MemberCreate(FormView):
             statuses_choices.append(
                 (status.status_code, status.status_text)
             )
-        initial['status'] = ChoiceField(choices=statuses_choices)
+        initial['status'] = ChoiceField(choices=statuses)
 
         return initial
 
+    
+    
 
 class MemberDetail(DetailView):
     """
