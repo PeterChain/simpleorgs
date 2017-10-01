@@ -33,6 +33,12 @@ class Member(models.Model):
     status = models.CharField(max_length=3, blank=True)
     picture = models.ImageField(upload_to='profiles')
 
+    def __str__(self):
+        return member_no
+    
+    def slug(self):
+        return member_no
+
 
 class MemberEmploymentHistory(models.Model):
     """

@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.forms import ChoiceField
 from django.views.generic import DetailView, FormView
 
+from apps.address.models import Address, AddressBook
+
 from .models import Member, MemberStatus
 from .forms import NewMemberForm
 
@@ -31,8 +33,12 @@ class MemberCreate(FormView):
 
         return initial
 
-    
-    
+    def form_valid(self, form):
+        """
+        Form submited successfully
+        """
+        
+
 
 class MemberDetail(DetailView):
     """
