@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.forms import ChoiceField
+from django.contrib.auth.models import User
 from django.views.generic import DetailView, FormView
 
 from apps.address.models import Address, AddressBook
@@ -37,7 +38,43 @@ class MemberCreate(FormView):
         """
         Form submited successfully
         """
-        
+
+        #1st step - Create an address book with default address
+        book = AddressBook.objects.create(
+            is_default=True,
+            is_active=True
+        )
+
+        # 2nd step - Create the address
+        address = Address.objects.create(
+            street=form.street,
+            house_no=form.street,
+            postal_code=form.postal_code,
+            city=form.city,
+            state=form.state,
+            country=form.country
+            addresses=book
+        )
+
+        # 3rd step - The member and user (when applied)
+        member = Member.objects.create(
+            name=form.name,
+            surname=form.surname,
+            date_of_birth=form.date_of_birth,
+            email=form.email,
+            telephone=form.telephone,
+            status=form.status,
+            picture=form.picture,
+            nationality=form.nationality,
+            address_book=book
+        )
+
+        if form.generate_use:
+            user = User.objects.create_user(
+                username=form.member_no,
+                email=form.email,
+                password="init1234"
+            ) 
 
 
 class MemberDetail(DetailView):
