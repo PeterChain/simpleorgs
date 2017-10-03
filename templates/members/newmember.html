@@ -7,6 +7,18 @@
 
 <form id="new-member-form" enctype="multipart/form-data" action="" method="POST">
     {% csrf_token %}
+    {% if messages %}
+        <div class="grid-x grid-margin-x panel">
+            <div class="callout secondary">
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="grid-x grid-margin-x panel">
         <!-- Header -->
         <div class="large-12 medium-12 small-12 cell">

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "New member" %}{% endblock %}
+
+{% block content %}
+
+<div class="grid-x grid-margin-x panel">
+    <div class="callout secondary">
+        <h5>{% trans "Member created successfully" %}</h5>
+        <p>
+            {% blocktrans %}
+                The member No. {{ context.member_no }} created successfully
+            {% endblocktrans %}
+        </p>
+        {% if context.with_user %}
+            <p>
+                {% blocktrans %}
+                    Username '{{ context.member_no }}' created and password sent to e-mail
+                {% endblocktrans %}
+            </p>
+            <a href="/">{% trans "Go back" %}</a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

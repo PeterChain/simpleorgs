@@ -1,12 +1,20 @@
 from django.shortcuts import render
 from django.forms import ChoiceField
+from django.urls import reverse
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, FormView
+from django.views.generic import DetailView, FormView, TemplateView
 
 from apps.address.models import Address, AddressBook
 
 from .models import Member, MemberStatus
 from .forms import NewMemberForm
+
+
+class SuccessView(TemplateView):
+    """
+    View for successful member operations
+    """
+    template_name = 'member/membersuccess.html'
 
 
 class MemberCreate(FormView):
@@ -15,7 +23,7 @@ class MemberCreate(FormView):
     """
     form_class = NewMemberForm
     template_name = 'members/newmember.html'
-    success_url = '/'
+    member = {}
 
     def get_initial(self):
         """
@@ -33,6 +41,15 @@ class MemberCreate(FormView):
         initial['status'] = ChoiceField(choices=statuses)
 
         return initial
+
+    def get_success_url(self):
+        """
+        Success URL, based on success created data
+        """
+        context.email = self.member.email
+        context.member_no = self.member_no.
+
+        return reverse('member:success', context)
 
     def form_valid(self, form):
         """
@@ -68,13 +85,14 @@ class MemberCreate(FormView):
             nationality=form.nationality,
             address_book=book
         )
+        self.member = member
 
         if form.generate_use:
             user = User.objects.create_user(
                 username=form.member_no,
                 email=form.email,
                 password="init1234"
-            ) 
+            )
 
 
 class MemberDetail(DetailView):

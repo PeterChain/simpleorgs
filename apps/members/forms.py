@@ -30,10 +30,7 @@ class NewMemberForm(forms.Form):
     country = LazyTypedChoiceField(choices=countries)
 
     # Administrive task
-    member_no = forms.CharField(max_length=5,
-        widget=forms.TextInput(
-            attrs={'tooltip':_("Leave empty for auto generation")}
-        ))
+    member_no = forms.CharField(max_length=5)
     generate_user = forms.BooleanField()
 
     def is_valid(self):
