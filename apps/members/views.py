@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.views.generic import DetailView, FormView, TemplateView
 
 from apps.address.models import Address, AddressBook
+from apps.main.mixin import LoggedProfileMixin
 
 from .models import Member, MemberStatus
 from .forms import NewMemberForm
@@ -17,7 +18,7 @@ class SuccessView(TemplateView):
     template_name = 'member/membersuccess.html'
 
 
-class MemberCreate(FormView):
+class MemberCreate(FormView, LoggedProfileMixin):
     """
     View for creating a complex form of member/address
     """
@@ -39,6 +40,7 @@ class MemberCreate(FormView):
                 (status.status_code, status.status_text)
             )
         initial['status'] = ChoiceField(choices=statuses)
+        initial['profile'] = self.get_logged_profile()
 
         return initial
 
@@ -47,7 +49,7 @@ class MemberCreate(FormView):
         Success URL, based on success created data
         """
         context.email = self.member.email
-        context.member_no = self.member_no.
+        context.member_no = self.member_no
 
         return reverse('member:success', context)
 
