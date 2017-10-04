@@ -34,11 +34,6 @@ class MemberCreate(FormView, LoggedProfileMixin):
 
         # Prepopulate member's status
         statuses = MemberStatus.objects.filter(initial_status=True)
-        statuses_choices = []
-        for status in statuses:
-            statuses_choices.append(
-                (status.status_code, status.status_text)
-            )
         initial['status'] = ChoiceField(choices=statuses)
         initial['profile'] = self.get_logged_profile()
 
@@ -71,8 +66,8 @@ class MemberCreate(FormView, LoggedProfileMixin):
             postal_code=form.postal_code,
             city=form.city,
             state=form.state,
-            country=form.country
-            addresses=book
+            country=form.country,
+            address_book=book
         )
 
         # 3rd step - The member and user (when applied)
@@ -92,6 +87,8 @@ class MemberCreate(FormView, LoggedProfileMixin):
         if form.generate_use:
             user = User.objects.create_user(
                 username=form.member_no,
+                first_name=form.name,
+                last_name=form.surname,
                 email=form.email,
                 password="init1234"
             )
