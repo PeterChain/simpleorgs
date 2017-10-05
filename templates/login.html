@@ -1,0 +1,47 @@
+{% extends "base_login.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<form id="login-form" action="." method="POST">
+    {% csrf_token %}
+    {% if messages %}
+    <div class="grid-x grid-margin-x">
+        <div class="large-8 large-offset-2 medium-8 medium-offset-2 small-12 cell">
+            <div class="callout alert">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br/>
+    {% endif %}
+
+    <div class="grid-x grid-margin-x">
+        <!-- Header -->
+        <div class="large-6 large-offset-3 medium-6 medium-offset-3 small-12 cell panel">
+            <h4 class="subheader">
+                {% trans "Enter credentials" %}
+            </h4>
+            <hr/>
+            <p>
+                <label>{% trans "Username" %}
+                    {{ form.username }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "Password" %}
+                    {{ form.password }}
+                </label>
+            </p>
+            <p>
+                <button class="button primary small">{% trans "Login" %}</button>
+            </p>
+        </div>
+    </div>
+</form>
+{% endblock %}

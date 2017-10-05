@@ -3,6 +3,9 @@ from django.urls import reverse
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.contrib.auth.models import User
 
+from apps.members.models import Member
+
+
 class LoggedProfileMixin(object):
     """
     Mixin for providing logged user information
@@ -10,7 +13,7 @@ class LoggedProfileMixin(object):
     def get_logged_profile(self):
         profile = {}
 
-        if notself.request.user:
+        if not self.request.user:
             return None
 
         try:
