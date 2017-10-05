@@ -8,11 +8,13 @@ class LoginForm(forms.Form):
     """
     Form for validating credentials
     """
-    username = forms.CharField(max_length=5,
+    username = forms.CharField(
+        required=True,
         label=_("Username")
     )
     password = forms.CharField(
         label=_("Password"),
+        required=True,
         widget=forms.PasswordInput()
     )
 
@@ -20,20 +22,21 @@ class LoginForm(forms.Form):
         """
         Validate the cleaned form
         """
-        self.cleaned_data = super().clean()
-        print(self.cleaned_data)
-        username = self.cleaned_data['username']
-        password = self.cleaned_data['password']
+        self.cleaned_data = super(LoginForm, self).clean()
+        user = self.cleaned_data['username']
+        passwd = self.cleaned_data['password']
 
         try:
-            user = User.objects.get(username=username,
+            user = User.objects.get(username=user,
                                     is_active=True)
 
             try:
                 self.authed_user = authenticate(
-                    username=username,
-                    password=password
+                    username=user,
+                    password=passwd
                 )
+                print("here?")
+                print(self.authed_user)
 
                 if self.authed_user:
                     print("here perhaps?")
