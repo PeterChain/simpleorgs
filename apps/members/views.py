@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.forms import ChoiceField
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, FormView, TemplateView
+from django.views.generic import DetailView, FormView, TemplateView, ListView
 
 from apps.address.models import Address, AddressBook
 from apps.main.mixin import LoggedProfileMixin
@@ -100,3 +100,11 @@ class MemberDetail(DetailView):
     """
     template_name = 'members/memberdetail.html'
     model = Member
+
+
+class MemberList(ListView):
+    """
+    View to list all members
+    """
+    model = Member
+    template_name = 'members/memberlist.html'

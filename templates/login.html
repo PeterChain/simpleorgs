@@ -28,7 +28,16 @@
                 {% trans "Enter credentials" %}
             </h4>
             <hr/>
-            {{ form.as_p }}
+            <p>
+                <label>{% trans "Username" %}
+                    {{ form.username }}
+                </label>
+            </p>
+            <p>
+                <label>{% trans "Password" %}
+                    {{ form.password }}
+                </label>
+            </p>
             <p>
                 <button class="button primary small">{% trans "Login" %}</button>
             </p>

@@ -35,22 +35,17 @@ class LoginForm(forms.Form):
                     username=user,
                     password=passwd
                 )
-                print("here?")
-                print(self.authed_user)
 
                 if self.authed_user:
-                    print("here perhaps?")
                     return self.cleaned_data
 
             except ValueError:
-                print("error in authentication")
                 self.authed_user = None
 
             if self.authed_user:
                 return self.cleaned_data
 
         except (User.DoesNotExist, KeyError):
-            print("Does not exist")
             pass
 
         raise forms.ValidationError("Your login details were incorrect. Please try again.")

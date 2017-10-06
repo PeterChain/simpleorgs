@@ -61,6 +61,16 @@ h1, h2, h3 {
     border: 2px solid #14DD20;
 }
 
+li .name-label {
+    color: #0d8214;
+    font-size: 14px;
+    line-height: 1;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0;
+    padding: .7rem 1rem;
+}
+
 .panel {
     border: 1px solid #A3A3A3;
     background-color: white;

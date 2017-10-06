@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 from django.contrib import messages
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, View
 from django.utils.translation import ugettext_lazy as _
 
 from utils.navigation import Navigation
@@ -46,6 +46,25 @@ class LoginView(FormView):
         Returns URL for index
         """
         return reverse('homepage')
+
+
+class LogoutView(View):
+    """
+    View for logout the user and end the session
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        Redirects to homepage if it's already logged
+        """
+        if request.user.is_authenticated():
+            logout(request)
+            return HttpResponseRedirect(self.get_success_url())
+    
+    def get_success_url(self):
+        """
+        returns the URL for the login page
+        """
+        return reverse('login')
 
 
 class Homepage(UserAuthMixin, TemplateView):
