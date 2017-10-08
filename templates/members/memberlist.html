@@ -1,3 +1,83 @@
-{% block content %}
+{% extends "base.html" %}
+{% load i18n %}
 
+{% block page-title %}{% trans "Members list" %}{% endblock %}
+
+
+{% block content %}
+<div class="grid-x panel">
+    <!-- Left bar - Member's list -->
+    <div class="large-2 medium-2 small-12">
+        <div class="grid-x">
+            <div class="large-10 medium-10 small-10">
+                <input type="text" placeholder="{% trans 'Search' %}"/>
+            </div>
+            <div class="large-2 medium-2 small-2">
+                <a class="button" type="button">
+                    <span><i class="pe-7s-search"></i></span>
+                </a>
+            </div>
+        </div>
+        <ul class="vertical tabs" data-tabs id="member-details">
+            <li class="tabs-title">
+                <a href="#m-221201">
+                <h6>Billy Joe</h5>
+                <h6>No. 221201</h6>
+                </a>
+            </li>
+            <li class="tabs-title">
+                <a href="#m-000121">
+                <p class="text-left"><h5>Awesome Dude from Texas</h5></p>
+                <p class="text-left"><h6>No. 000121</h6></p>
+                </a>
+            </li>
+            <li class="tabs-title">
+                <a href="#m-546301">
+                <p class="text-left"><h5>Jack Coleen</h5></p>
+                <p class="text-left"><h6>No. 546301</h6></p>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Right bar - Member detail -->
+    <div class="large-10 medium-12 hide-for-small">
+        <div data-tabs-content="member-details">
+            <div class="tabs-panel" id="m-221201">
+                <h4 class="subheader">Billy Joe</h4><br/>
+                <h6 class="subheader">No:221201</h6>
+                <hr/>
+                <p>
+                    <label>
+                        Name:
+                        <input type="text" readonly value="John Doe"></input>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Age:
+                        <input type="text" value="32" readonly></input>
+                    </label>
+                </p>
+            </div>
+            <div class="tabs-panel" id="m-546301">
+                <h4 class="subheader">Jack Coleen</h4><br/>
+                <h6 class="subheader">No:546301</h6>
+                <hr/>
+                <p>
+                    <label>
+                        Name:
+                        <input type="text" readonly value="John Doe"></input>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        Age:
+                        <input type="text" value="32" readonly></input>
+                    </label>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

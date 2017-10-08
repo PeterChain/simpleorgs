@@ -55,3 +55,14 @@ class LoginForm(forms.Form):
         Return the authenticated user
         """
         return self.authed_user
+
+
+class SettingsForm(forms.ModelForm):
+    """
+    Form for changing User data
+    """
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'password')

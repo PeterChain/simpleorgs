@@ -37,15 +37,18 @@
                     </li>
                     <li>
                         <div class="name-label">
-                            {% blocktrans %}
-                                Hi, {{ request.user.first_name }}{{ request.user.last_name }}
-                            {% endblocktrans %}
+                            {% trans "Hi, " %}
+                            {{ request.user.first_name }}{{ request.user.last_name }}
                         </div>
                     </li>
                     <li>
-                        <img src="http://www.cadouricraiova.ro/assets/images/avtar.png" class="round-pic pic-orange"/>
+                        {% if profile.picture %}
+                            <img src="{{ profile.picture.url }}" class="round-pic pic-orange"/>
+                        {% else %}
+                            <img src="http://www.cadouricraiova.ro/assets/images/avtar.png" class="round-pic pic-orange"/>
+                        {% endif %}
                         <ul class="submenu menu vertical" data-submenu>
-                            <li><a href="#0">{% trans "My settings" %}</a></li>
+                            <li><a href="{% url 'settings' %}">{% trans "My settings" %}</a></li>
                             <li><a href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
                         </ul>
                     </li>

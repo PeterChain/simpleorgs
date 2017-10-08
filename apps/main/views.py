@@ -1,13 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
+from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views.generic import TemplateView, FormView, View
+from django.views.generic import TemplateView, FormView, View, UpdateView
 from django.utils.translation import ugettext_lazy as _
 
 from utils.navigation import Navigation
 
-from .forms import LoginForm
+from .forms import LoginForm, SettingsForm
 from .mixin import UserAuthMixin
 
 
@@ -59,7 +60,7 @@ class LogoutView(View):
         if request.user.is_authenticated():
             logout(request)
             return HttpResponseRedirect(self.get_success_url())
-    
+
     def get_success_url(self):
         """
         returns the URL for the login page
@@ -85,3 +86,29 @@ class Homepage(UserAuthMixin, TemplateView):
         return context
 
 
+class UserSettingsView(UpdateView):
+    """
+    View for updating user specific information
+    """
+    form_class = SettingsForm
+    template_name = 'settings.html'
+
+    def get_success_url(self):
+        """
+        Returns the homepage as successful change
+        """
+        return reverse('homepage')
+
+    def get_object(self):
+        """
+        Returns the User object of the session
+        """
+        return self.request.user
+
+    def form_valid(self, form):
+        user = self.request.user
+        user.first_name = form.cleaned_data['first_name']
+        user.last_name = form.cleaned_data['last_name']
+        user.set_password(form.cleaned_data['password'])
+        user.save()
+        return super(UserSettingsView, self).form_valid(form)

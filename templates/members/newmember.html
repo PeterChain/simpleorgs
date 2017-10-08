@@ -8,7 +8,7 @@
 <form id="new-member-form" enctype="multipart/form-data" action="" method="POST">
     {% csrf_token %}
     {% if messages %}
-        <div class="grid-x grid-margin-x panel">
+        <div class="grid-x grid-margin-x panel pad-5">
             <div class="callout secondary">
                 <ul>
                 {% for message in messages %}
