@@ -8,7 +8,7 @@
 <div class="grid-x panel">
     <!-- Left bar - Member's list -->
     <div class="large-2 medium-2 small-12">
-        <div class="grid-x">
+        <div class="grid-x search-box">
             <div class="large-10 medium-10 small-10">
                 <input type="text" placeholder="{% trans 'Search' %}"/>
             </div>
@@ -19,12 +19,7 @@
             </div>
         </div>
         <ul class="vertical tabs" data-tabs id="member-details">
-            <li class="tabs-title">
-                <a href="#m-221201">
-                <h6>Billy Joe</h5>
-                <p>No. 221201</p>
-                </a>
-            </li>
+            {% include "partials/list_item.html" with url='#m221201' member_name='Billy Joe' member_no='221201' %}
             <li class="tabs-title">
                 <a href="#m-000121">
                 <p class="text-left"><h5>Awesome Dude from Texas</h5></p>
@@ -60,7 +55,7 @@
                     </label>
                 </p>
             </div>
-            <div class="tabs-panel" id="m-546301">
+            <div class="tabs-panel" id="m546301">
                 <h4 class="subheader">Jack Coleen</h4><br/>
                 <h6 class="subheader">No:546301</h6>
                 <hr/>

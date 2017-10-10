@@ -52,13 +52,17 @@ h1, h2, h3 {
     background-color: #eeeeee;
 }
 
-.panel .tabs-title {
+.panel .tabs-title a{
     margin: 0;
-    padding: 0;
+    padding: .5em 1rem;
 }
 
 .panel .tabs-title a {
     color: #8a8a8a;
+}
+
+.tabs-title a:hover {
+    background-color: #CECECE;
 }
 
 .pic-orange {
@@ -128,4 +132,12 @@ li .name-label {
 
 .tile:hover {
     background: linear-gradient(#00C300, #00AD00);
+}
+
+.search-box {
+    max-height: 40px;
+}
+
+.search-box input, .search-box button {
+    width: auto;
 }
