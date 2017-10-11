@@ -1,0 +1,17 @@
+<div class="tabs-panel" id="m{{ member.member_no }}">
+    <h4 class="subheader">{{ member.name }} {{ member.surname }}</h4><br/>
+    <h6 class="subheader">{% trans "No.:" %} {{ member.member_no }}</h6>
+    <hr/>
+    <p>
+        <label>
+            Name:
+            <input type="text" readonly value="John Doe"></input>
+        </label>
+    </p>
+    <p>
+        <label>
+            Age:
+            <input type="text" value="32" readonly></input>
+        </label>
+    </p>
+</div>

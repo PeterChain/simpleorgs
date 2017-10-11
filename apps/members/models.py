@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 from django_countries.fields import CountryField
 
@@ -9,9 +10,18 @@ class MemberStatus(models.Model):
     """
     Member's possible status
     """
+    STATUS_TYPE = (
+        ('V', _('Valid')),
+        ('I', _('Intermediary')),
+        ('F', _('Final'))
+    )
+
     status_code = models.CharField(max_length=3)
     status_text = models.CharField(max_length=80)
     initial_status = models.BooleanField(default=True)
+    status_type = models.CharField(max_length=1, 
+                                   choices=STATUS_TYPE, 
+                                   default='V')
 
 
 class Member(models.Model):

@@ -9,29 +9,12 @@
     <!-- Left bar - Member's list -->
     <div class="large-2 medium-2 small-12">
         <div class="grid-x search-box">
-            <div class="large-10 medium-10 small-10">
-                <input type="text" placeholder="{% trans 'Search' %}"/>
-            </div>
-            <div class="large-2 medium-2 small-2">
-                <a class="button" type="button">
-                    <span><i class="pe-7s-search"></i></span>
-                </a>
-            </div>
+            <input placeholder="{% trans "Search" %}" type="text">
         </div>
-        <ul class="vertical tabs" data-tabs id="member-details">
-            {% include "partials/list_item.html" with url='#m221201' member_name='Billy Joe' member_no='221201' %}
-            <li class="tabs-title">
-                <a href="#m-000121">
-                <p class="text-left"><h5>Awesome Dude from Texas</h5></p>
-                <p class="text-left"><h6>No. 000121</h6></p>
-                </a>
-            </li>
-            <li class="tabs-title">
-                <a href="#m-546301">
-                <p class="text-left"><h5>Jack Coleen</h5></p>
-                <p class="text-left"><h6>No. 546301</h6></p>
-                </a>
-            </li>
+        <ul class="vertical tabs list-items" data-tabs id="member-details">
+            {% for member in object_list %}
+                {% include "partials/list_item.html" with url='#m221201' member_name='Billy Joe' member_no='221201' %}
+            {% endfor %}
         </ul>
     </div>
 

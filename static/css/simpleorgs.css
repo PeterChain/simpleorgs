@@ -54,11 +54,11 @@ h1, h2, h3 {
 
 .panel .tabs-title a{
     margin: 0;
-    padding: .5em 1rem;
+    padding: .5em .2em;
 }
 
 .panel .tabs-title a {
-    color: #8a8a8a;
+    color: #646464;
 }
 
 .tabs-title a:hover {
@@ -135,9 +135,22 @@ li .name-label {
 }
 
 .search-box {
-    max-height: 40px;
+    max-height: 2.3rem;
 }
 
-.search-box input, .search-box button {
-    width: auto;
+.member-ok {
+    color: #00B300;
+}
+
+.member-intermediary {
+    color: #E2D51E;
+}
+
+.member-inactive {
+    color: #E00D0D;
+}
+
+.list-items {
+    max-height: 120px;
+    overflow-y: scroll;
 }

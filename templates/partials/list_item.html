@@ -1,8 +1,19 @@
 {% load i18n %}
 
 <li class="tabs-title">
-    <a href="{{ url }}">
-        <b>{{ member_name }}</b>
-        <p>{% trans "No." %} {{ member_no }}</p>
+    <a href="#m{{ member.member_no }}">
+        <div class="grid-x">
+            <div class="large-12 medium-12 small-12">
+            <span class="h6">
+                <b>{{ member.name }} {{ member.surname }}</b>
+            </span>
+            </div>
+            <div class="lage-6 medium-6 small-12">
+                {% trans "No." %} {{ member.member_no }}
+            </div>
+            <div class="lage-6 medium-6 small-12 text-right">
+                <span class="member-ok">{% trans "active" %}</span>
+            </div>
+        </div>
     </a>
 </li>
