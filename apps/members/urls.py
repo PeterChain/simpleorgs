@@ -7,5 +7,6 @@ from .views import *
 urlpatterns = [
     url(r'^new/$', MemberCreate.as_view(), name='create'),
     url(r'^list/$', MemberList.as_view(), name='list'),
+    url(r'^detail/(?P<member_no>[\w-]+)$', MemberDetail.as_view(), name='detail'),
     url(r'^success/$', SuccessView.as_view(), name='success')
 ]

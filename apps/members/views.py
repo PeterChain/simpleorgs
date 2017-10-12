@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.forms import ChoiceField
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, FormView, TemplateView, ListView
+from django.views.generic import UpdateView, FormView, TemplateView, ListView
 
 from apps.address.models import Address, AddressBook
 from apps.main.mixin import LoggedProfileMixin
@@ -94,12 +94,34 @@ class MemberCreate(FormView, LoggedProfileMixin):
             )
 
 
-class MemberDetail(DetailView):
+class MemberDetail(UpdateView):
     """
     View for displaying a member
     """
     template_name = 'members/memberdetail.html'
     model = Member
+
+    def get_context_data(self, **kwargs):
+        """
+        Returns the Member data based on member No.
+        """
+        context = super().get_context_data(**kwargs)
+        member = Member.objects.get(member_no=self.kwargs['member_no'])
+        context['member'] = member
+        context['address_book'] = Address.objects.filter(address_book=member.address_book)
+        return context
+    
+    def form_valid(self):
+        """
+        Updates member's details
+        """
+        super().form_valid(**kwargs)
+
+    def get_success_url(self):
+        """
+        Returns to member's list
+        """
+        return reverse('member:list', context)
 
 
 class MemberList(ListView):
@@ -107,4 +129,4 @@ class MemberList(ListView):
     View to list all members
     """
     model = Member
-    template_name = 'members/memberlist.html'
+    template_name = 'members/fullmemberlist.html'

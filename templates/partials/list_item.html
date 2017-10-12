@@ -3,15 +3,15 @@
 <li class="tabs-title">
     <a href="#m{{ member.member_no }}">
         <div class="grid-x">
-            <div class="large-12 medium-12 small-12">
+            <div class="large-12 medium-12 small-12 cell">
             <span class="h6">
                 <b>{{ member.name }} {{ member.surname }}</b>
             </span>
             </div>
-            <div class="lage-6 medium-6 small-12">
+            <div class="lage-6 medium-6 small-12 cell">
                 {% trans "No." %} {{ member.member_no }}
             </div>
-            <div class="lage-6 medium-6 small-12 text-right">
+            <div class="lage-6 medium-6 small-12 text-right cell">
                 <span class="member-ok">{% trans "active" %}</span>
             </div>
         </div>

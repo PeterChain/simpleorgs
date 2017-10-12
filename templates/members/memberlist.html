@@ -7,54 +7,32 @@
 {% block content %}
 <div class="grid-x panel">
     <!-- Left bar - Member's list -->
-    <div class="large-2 medium-2 small-12">
+    <div class="large-2 medium-2 small-12 cell">
         <div class="grid-x search-box">
             <input placeholder="{% trans "Search" %}" type="text">
         </div>
-        <ul class="vertical tabs list-items" data-tabs id="member-details">
+        <ul class="vertical tabs list-items scrollable" data-tabs id="member-details">
             {% for member in object_list %}
-                {% include "partials/list_item.html" with url='#m221201' member_name='Billy Joe' member_no='221201' %}
+                {% include "partials/list_item.html" with member=member %}
             {% endfor %}
         </ul>
     </div>
 
     <!-- Right bar - Member detail -->
-    <div class="large-10 medium-12 hide-for-small">
+    <div class="large-10 medium-12 hide-for-small cell">
         <div data-tabs-content="member-details">
-            <div class="tabs-panel" id="m-221201">
-                <h4 class="subheader">Billy Joe</h4><br/>
-                <h6 class="subheader">No:221201</h6>
-                <hr/>
-                <p>
-                    <label>
-                        Name:
-                        <input type="text" readonly value="John Doe"></input>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Age:
-                        <input type="text" value="32" readonly></input>
-                    </label>
-                </p>
-            </div>
-            <div class="tabs-panel" id="m546301">
-                <h4 class="subheader">Jack Coleen</h4><br/>
-                <h6 class="subheader">No:546301</h6>
-                <hr/>
-                <p>
-                    <label>
-                        Name:
-                        <input type="text" readonly value="John Doe"></input>
-                    </label>
-                </p>
-                <p>
-                    <label>
-                        Age:
-                        <input type="text" value="32" readonly></input>
-                    </label>
-                </p>
-            </div>
+            {% if object_list %}
+                {% for member in object_list %}
+                    {% include "partials/item_detail.html" with member=member %}
+                {% endfor %}
+            {% else %}
+                <div>
+                    <br/>
+                    <p class="text-center">
+                        <h5>{% trans "No members found" %}</h5>
+                    </p>
+                </div>
+            {% endif %}            
         </div>
     </div>
 </div>

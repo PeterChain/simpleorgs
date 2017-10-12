@@ -152,5 +152,17 @@ li .name-label {
 
 .list-items {
     max-height: 120px;
+}
+
+.items-table {
+    max-height: 300px;
+}
+
+.member-header {
+    background-color: #ECF1EC;
+    border-bottom: 1px solid #E1E6E1;
+}
+
+.scrollable {
     overflow-y: scroll;
 }

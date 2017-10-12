@@ -58,3 +58,4 @@ class NewMemberForm(forms.Form):
                 self.member_no = num_range.next(1)
 
         return True
+

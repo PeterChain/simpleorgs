@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page-title %}{% trans "Members list" %}{% endblock %}
+
+
+{% block content %}
+<div class="grid-x panel">
+    <!-- Toolbar -->
+    <div class="large-10 large-offset-1 medium-10 medium-offset-1 small-12">
+        <input type="text" placeholder="Search" />
+    </div>
+
+    <div class="large-12 medium-12 small-12 items-table scrollable">
+        {% if object_list %}
+            {% for member in object_list %}
+                <div class="grid-x">
+                    <div class="large-3 medium-3 hide-for-small cell align-self-middle">
+                        <img src="{{ member.picture.url }}" height="100px" width="100px" alt="member picture" />
+                    </div>
+                    <div class="large-7 medium-7 small-12">
+                        <div class="grid-x">
+                            <span class="h6">
+                                <b>{{ member.name }} {{ member.surname }}</b>
+                            </span>
+                            <div class="lage-6 medium-6 small-12 cell">
+                                {% trans "No." %} {{ member.member_no }}
+                            </div>
+                            <div class="lage-6 medium-6 small-12 text-right cell">
+                                <span class="member-ok">{% trans "active" %}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock content %}
