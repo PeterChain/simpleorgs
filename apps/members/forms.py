@@ -14,10 +14,12 @@ class NewMemberForm(forms.Form):
     """
     name = forms.CharField(max_length=45)
     surname = forms.CharField(max_length=45)
-    date_of_birth = forms.DateField()
+    date_of_birth = forms.DateField(
+        widget=forms.DateInput(attrs={'type':'date'})
+    )
     email = forms.EmailField(required=False)
     telephone = forms.CharField(max_length=20, required=False)
-    status = forms.ModelChoiceField(queryset=MemberStatus.objects.filter(initial_status=True))
+    status = forms.ModelChoiceField(queryset=MemberStatus.objects.filter(initial_status=True), required=False)
     picture = forms.ImageField()
     nationality = LazyTypedChoiceField(choices=countries)
 
@@ -30,22 +32,25 @@ class NewMemberForm(forms.Form):
     country = LazyTypedChoiceField(choices=countries)
 
     # Administrive task
-    member_no = forms.CharField(max_length=5)
-    generate_user = forms.BooleanField()
+    member_no = forms.CharField(max_length=5, required=False)
+    generate_user = forms.BooleanField(initial=False, required=False)
 
     def is_valid(self):
         """
         Validate the form data
         """
-        if self.generate_user == True and not self.email:
+        super().is_valid()
+
+        form = self.cleaned_data
+        if form['generate_user'] == True and not form['email']:
             raise ValidationError(_("E-mail is required for user generation"))
 
-        if not self.postal_code:
+        if not form['postal_code']:
             raise ValidationError(_("Postal code is required for address"))
 
         # If member No. is filled, we must check if it's unique
-        if not self.member_no:
-            if Member.objects.filter(slug=self.member_no):
+        if not form['member_no']:
+            if Member.objects.filter(member_no=form['member_no']):
                 raise ValidationError(_("Member No. is already taken"))
 
             # If empty, we increment a unit to the last one
@@ -55,7 +60,7 @@ class NewMemberForm(forms.Form):
                     num_range = NumberRange(max_no)
                 else:
                     num_range = NumberRange("00000")
-                self.member_no = num_range.next(1)
+                form['member_no'] = num_range.next(1)
 
         return True
 

@@ -52,6 +52,7 @@ class MemberCreate(FormView, LoggedProfileMixin):
         """
         Form submited successfully
         """
+        print(form.cleaned_data)
 
         #1st step - Create an address book with default address
         book = AddressBook.objects.create(
