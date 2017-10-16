@@ -62,35 +62,35 @@ class MemberCreate(FormView, LoggedProfileMixin):
 
         # 2nd step - Create the address
         address = Address.objects.create(
-            street=form.street,
-            house_no=form.street,
-            postal_code=form.postal_code,
-            city=form.city,
-            state=form.state,
-            country=form.country,
+            street=form.cleaned_data['street'],
+            house_no=form.cleaned_data['street'],
+            postal_code=form.cleaned_data['postal_code'],
+            city=form.cleaned_data['city'],
+            state=form.cleaned_data['state'],
+            country=form.cleaned_data['country'],
             address_book=book
         )
 
         # 3rd step - The member and user (when applied)
         member = Member.objects.create(
-            name=form.name,
-            surname=form.surname,
-            date_of_birth=form.date_of_birth,
-            email=form.email,
-            telephone=form.telephone,
-            status=form.status,
-            picture=form.picture,
-            nationality=form.nationality,
+            name=form.cleaned_data['name'],
+            surname=form.cleaned_data['surname'],
+            date_of_birth=form.cleaned_data['date_of_birth'],
+            email=form.cleaned_data['email'],
+            telephone=form.cleaned_data['telephone'],
+            status=form.cleaned_data['status'],
+            picture=form.cleaned_data['picture'],
+            nationality=form.cleaned_data['nationality'],
             address_book=book
         )
         self.member = member
 
-        if form.generate_use:
+        if form.cleaned_data['generate_use']:
             user = User.objects.create_user(
-                username=form.member_no,
-                first_name=form.name,
-                last_name=form.surname,
-                email=form.email,
+                username=form.cleaned_data['member_no'],
+                first_name=form.cleaned_data['name'],
+                last_name=form.cleaned_data['surname'],
+                email=form.cleaned_data['email'],
                 password="init1234"
             )
 

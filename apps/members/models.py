@@ -40,14 +40,14 @@ class Member(models.Model):
                                         related_name='address_book', 
                                         on_delete=models.CASCADE,
                                         null=True)
-    status = models.CharField(max_length=3, blank=True)
+    status = models.CharField(max_length=3, null=True, blank=True)
     picture = models.ImageField(upload_to='profiles')
 
     def __str__(self):
-        return member_no
+        return self.member_no
     
     def slug(self):
-        return member_no
+        return self.member_no
 
 
 class MemberEmploymentHistory(models.Model):

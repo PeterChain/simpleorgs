@@ -39,26 +39,31 @@
                 <label>{% trans "Name" %}
                     {{ form.name }}
                 </label>
+                {% include "partials/form_error.html" with field=form.name %}
             </p>
             <p>
                 <label>{% trans "Surname" %}
                     {{ form.surname }}
                 </label>
+                {% include "partials/form_error.html" with field=form.surname %}
             </p>
             <p>
                 <label>{% trans "Date of birth" %}
                     {{ form.date_of_birth }}
                 </label>
+                {% include "partials/form_error.html" with field=form.date_of_birth %}
             </p>
             <p>
                 <label>{% trans "Nationality" %}
                     {{ form.nationality }}
                 </label>
+                {% include "partials/form_error.html" with field=form.nationality %}
             </p>
             <p>
                 <label>{% trans "Profile picture" %}
                     {{ form.picture }}
                 </label>
+                {% include "partials/form_error.html" with field=form.picture %}
             </p>
         </div>
 
@@ -73,11 +78,13 @@
                 <label>{% trans "Phone number" %}
                     {{ form.telephone }}
                 </label>
+                {% include "partials/form_error.html" with field=form.telephone %}
             </p>
             <p>
                 <label>{% trans "E-mail" %}
                     {{ form.email }}
                 </label>
+                {% include "partials/form_error.html" with field=form.email %}
             </p>
         </div>
 
@@ -92,31 +99,37 @@
                 <label>{% trans "Street" %}
                     {{ form.street }}
                 </label>
+                {% include "partials/form_error.html" with field=form.street %}
             </p>
             <p>
                 <label>{% trans "House No." %}
                     {{ form.house_no }}
                 </label>
+                {% include "partials/form_error.html" with field=form.house_no %}
             </p>
             <p>
                 <label>{% trans "Postal code" %}
                     {{ form.postal_code }}
                 </label>
+                {% include "partials/form_error.html" with field=form.postal_code %}
             </p>
             <p>
                 <label>{% trans "City" %}
-                    {{ form.house_no }}
+                    {{ form.city }}
                 </label>
+                {% include "partials/form_error.html" with field=form.city %}
             </p>
             <p>
                 <label>{% trans "State/District" %}
                     {{ form.state }}
                 </label>
+                {% include "partials/form_error.html" with field=form.state %}
             </p>
             <p>
                 <label>{% trans "Country" %}
                     {{ form.country }}
                 </label>
+                {% include "partials/form_error.html" with field=form.country %}
             </p>
         </div>
 
@@ -131,16 +144,19 @@
                 <label>{% trans "Create user?" %}
                     {{ form.generate_user }}
                 </label>
+                {% include "partials/form_error.html" with field=form.generate_user %}
             </p>
             <p>
                 <label>{% trans "Member No." %}
                     {{ form.member_no }}
                 </label>
+                {% include "partials/form_error.html" with field=form.member_no %}
             </p>
             <p>
                 <label>{% trans "Member Status" %}
                     {{ form.status }}
                 </label>
+                {% include "partials/form_error.html" with field=form.status %}
             </p>
         </div>
 

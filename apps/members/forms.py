@@ -35,23 +35,37 @@ class NewMemberForm(forms.Form):
     member_no = forms.CharField(max_length=5, required=False)
     generate_user = forms.BooleanField(initial=False, required=False)
 
-    def is_valid(self):
+    def clean_postal_code(self):
         """
-        Validate the form data
+        Postal code is a mandatory for all addresses
         """
-        super().is_valid()
+        postal_code = self.cleaned_data['postal_code']
 
-        form = self.cleaned_data
-        if form['generate_user'] == True and not form['email']:
+        if not postal_code:
+            raise forms.ValidationError(_("Postal code is required for address"))
+        return postal_code
+    
+    def clean_generate_user(self):
+        """
+        If the member will have a user, email is required
+        """
+        generate_user = self.cleaned_data['generate_user']
+        email = self.cleaned_data['email']
+
+        if generate_user == True and not email:
             raise ValidationError(_("E-mail is required for user generation"))
+        return generate_user
 
-        if not form['postal_code']:
-            raise ValidationError(_("Postal code is required for address"))
+    def clean_member_no(self):
+        """
+        Validate member's No. uniqueness or gets a new one
+        """
+        member_no = self.cleaned_data['member_no']
 
         # If member No. is filled, we must check if it's unique
-        if not form['member_no']:
-            if Member.objects.filter(member_no=form['member_no']):
-                raise ValidationError(_("Member No. is already taken"))
+        if not member_no:
+            if Member.objects.filter(member_no=member_no):
+                raise forms.ValidationError(_("Member No. is already taken"))
 
             # If empty, we increment a unit to the last one
             if Member.objects.exists():
@@ -60,7 +74,6 @@ class NewMemberForm(forms.Form):
                     num_range = NumberRange(max_no)
                 else:
                     num_range = NumberRange("00000")
-                form['member_no'] = num_range.next(1)
+                member_no = num_range.next(1)
 
-        return True
-
+        return member_no
