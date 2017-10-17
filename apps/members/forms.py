@@ -1,4 +1,5 @@
 from django import forms
+from django.db.models import Max
 from django.utils.translation import ugettext_lazy as _
 
 from django_countries.fields import LazyTypedChoiceField, countries
@@ -63,17 +64,17 @@ class NewMemberForm(forms.Form):
         member_no = self.cleaned_data['member_no']
 
         # If member No. is filled, we must check if it's unique
+        import pdb; pdb.set_trace()
         if not member_no:
             if Member.objects.filter(member_no=member_no):
                 raise forms.ValidationError(_("Member No. is already taken"))
 
             # If empty, we increment a unit to the last one
-            if Member.objects.exists():
-                max_no = Member.objects.all().aggregate(Max(member_no))
-                if max_no:
-                    num_range = NumberRange(max_no)
-                else:
-                    num_range = NumberRange("00000")
-                member_no = num_range.next(1)
+            max_no = Member.objects.all().aggregate(Max('member_no'))
+            if max_no['member_no__max']:
+                num_range = NumberRange(max_no['member_no__max'])
+            else:
+                num_range = NumberRange("00000")
+            member_no = num_range.next(1)
 
         return member_no

@@ -1,9 +1,19 @@
+import os
 from django.db import models
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from django_countries.fields import CountryField
 
 from apps.address.models import AddressBook
+
+
+def get_member_path(instance, filename):
+    """
+    returns the path for the member's files
+    """
+    path = os.path.join(settings.MEDIA_ROOT, 'profile')
+    return path
 
 
 class MemberStatus(models.Model):
@@ -41,7 +51,7 @@ class Member(models.Model):
                                         on_delete=models.CASCADE,
                                         null=True)
     status = models.CharField(max_length=3, null=True, blank=True)
-    picture = models.ImageField(upload_to='profiles')
+    picture = models.ImageField(upload_to=get_member_path)
 
     def __str__(self):
         return self.member_no
