@@ -2,7 +2,9 @@
     <div class="callout alert">
             <ul>
             {% for error in field.errors %}
-                <li>{{ field.errors }}</li>
+                {% if error %}
+                    <li>{{ field.errors }}</li>
+                {% endif %}
             {% endfor %}
             </ul>
     </div>

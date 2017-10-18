@@ -64,7 +64,6 @@ class NewMemberForm(forms.Form):
         member_no = self.cleaned_data['member_no']
 
         # If member No. is filled, we must check if it's unique
-        import pdb; pdb.set_trace()
         if not member_no:
             if Member.objects.filter(member_no=member_no):
                 raise forms.ValidationError(_("Member No. is already taken"))

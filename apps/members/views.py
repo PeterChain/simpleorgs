@@ -52,7 +52,6 @@ class MemberCreate(FormView, LoggedProfileMixin):
         """
         Form submited successfully
         """
-        print(form.cleaned_data)
 
         #1st step - Create an address book with default address
         book = AddressBook.objects.create(
@@ -75,6 +74,7 @@ class MemberCreate(FormView, LoggedProfileMixin):
         member = Member.objects.create(
             name=form.cleaned_data['name'],
             surname=form.cleaned_data['surname'],
+            member_no=form.cleaned_data['member_no'],
             date_of_birth=form.cleaned_data['date_of_birth'],
             email=form.cleaned_data['email'],
             telephone=form.cleaned_data['telephone'],
@@ -85,7 +85,7 @@ class MemberCreate(FormView, LoggedProfileMixin):
         )
         self.member = member
 
-        if form.cleaned_data['generate_use']:
+        if form.cleaned_data['generate_user']:
             user = User.objects.create_user(
                 username=form.cleaned_data['member_no'],
                 first_name=form.cleaned_data['name'],
@@ -94,6 +94,7 @@ class MemberCreate(FormView, LoggedProfileMixin):
                 password="init1234"
             )
 
+        return super().form_valid(form)
 
 class MemberDetail(UpdateView):
     """

@@ -19,5 +19,5 @@ class NumberRange(object):
         """
         int_num = int(self.old_number)
         int_num += step
-        result_str = int(int_num).zfill(FILL_LENGTH)
+        result_str = str(int_num).zfill(self.FILL_LENGTH)
         return result_str
