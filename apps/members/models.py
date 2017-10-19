@@ -12,7 +12,8 @@ def get_member_path(instance, filename):
     """
     returns the path for the member's files
     """
-    path = os.path.join(settings.MEDIA_ROOT, 'profile')
+    slug = ''.join(['m', str(instance.member_no)])
+    path = os.path.join(slug, 'profile')
     return path
 
 
@@ -51,6 +52,7 @@ class Member(models.Model):
                                         on_delete=models.CASCADE,
                                         null=True)
     status = models.CharField(max_length=3, null=True, blank=True)
+    has_user = models.BooleanField(default=False)
     picture = models.ImageField(upload_to=get_member_path)
 
     def __str__(self):

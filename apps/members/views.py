@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.shortcuts import render
 from django.forms import ChoiceField
 from django.urls import reverse
@@ -15,7 +16,8 @@ class SuccessView(TemplateView):
     """
     View for successful member operations
     """
-    template_name = 'member/membersuccess.html'
+    template_name = 'members/membersuccess.html'
+    model = Member
 
 
 class MemberCreate(FormView, LoggedProfileMixin):
@@ -43,11 +45,12 @@ class MemberCreate(FormView, LoggedProfileMixin):
         """
         Success URL, based on success created data
         """
-        context.email = self.member.email
-        context.member_no = self.member_no
+        data = {}
+        data['slug'] = self.member.member_no
 
-        return reverse('member:success', context)
-
+        return reverse('members:success', kwargs=data)
+    
+    @transaction.atomic
     def form_valid(self, form):
         """
         Form submited successfully
@@ -81,6 +84,7 @@ class MemberCreate(FormView, LoggedProfileMixin):
             status=form.cleaned_data['status'],
             picture=form.cleaned_data['picture'],
             nationality=form.cleaned_data['nationality'],
+            has_user=form.cleaned_data['generate_user'],
             address_book=book
         )
         self.member = member
@@ -96,7 +100,7 @@ class MemberCreate(FormView, LoggedProfileMixin):
 
         return super().form_valid(form)
 
-class MemberDetail(UpdateView):
+class MemberDetail(UpdateView, LoggedProfileMixin):
     """
     View for displaying a member
     """
@@ -126,7 +130,7 @@ class MemberDetail(UpdateView):
         return reverse('member:list', context)
 
 
-class MemberList(ListView):
+class MemberList(ListView, LoggedProfileMixin):
     """
     View to list all members
     """
