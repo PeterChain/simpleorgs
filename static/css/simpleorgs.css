@@ -10,6 +10,10 @@ h1, h2, h3 {
     /*font-family: Arial, Helvetica, sans-serif, monospace;*/
 }
 
+h1 a, h2 a, h3 a {
+    color: #0d8214;
+}
+
 .top-bar {
     border-bottom: 1px solid #A3A3A3;
     background-color: white;

@@ -6,7 +6,20 @@ from django.contrib.auth.models import User
 from apps.members.models import Member
 
 
-class LoggedProfileMixin(object):
+class UserAuthMixin(object):
+    """
+    Mixin for checking access to restricted areas
+    """
+
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            # return HttpResponseForbidden()
+            return HttpResponseRedirect(reverse('login'))
+        return super(UserAuthMixin, self).dispatch(request, *args, **kwargs)
+
+
+
+class LoggedProfileMixin(UserAuthMixin):
     """
     Mixin for providing logged user information
     """
@@ -29,17 +42,3 @@ class LoggedProfileMixin(object):
             return None
 
         return context
-
-
-
-class UserAuthMixin(object):
-    """
-    Mixin for checking access to restricted areas
-    """
-
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated():
-            # return HttpResponseForbidden()
-            return HttpResponseRedirect(reverse('login'))
-        return super(UserAuthMixin, self).dispatch(request, *args, **kwargs)
-

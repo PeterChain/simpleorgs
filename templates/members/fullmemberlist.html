@@ -14,7 +14,7 @@
     <div class="large-12 medium-12 small-12 items-table scrollable">
         {% if object_list %}
             {% for member in object_list %}
-                <div class="grid-x">
+                <div class="grid-x grid-padding-x">
                     <div class="large-3 medium-3 hide-for-small cell align-self-middle">
                         <img src="{{ member.picture.url }}" height="100px" width="100px" alt="member picture" />
                     </div>
@@ -22,7 +22,7 @@
                         <div class="grid-x">
                             <span class="h6">
                                 <b>{{ member.name }} {{ member.surname }}</b>
-                            </span>
+                             </span>
                             <div class="lage-6 medium-6 small-12 cell">
                                 {% trans "No." %} {{ member.member_no }}
                             </div>

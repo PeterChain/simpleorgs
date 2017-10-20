@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView, FormView, TemplateView, ListView
 
 from apps.address.models import Address, AddressBook
-from apps.main.mixin import LoggedProfileMixin
+from apps.main.mixin import UserAuthMixin
 
 from .models import Member, MemberStatus
 from .forms import NewMemberForm
@@ -20,7 +20,7 @@ class SuccessView(TemplateView):
     model = Member
 
 
-class MemberCreate(FormView, LoggedProfileMixin):
+class MemberCreate(FormView, UserAuthMixin):
     """
     View for creating a complex form of member/address
     """
@@ -100,7 +100,8 @@ class MemberCreate(FormView, LoggedProfileMixin):
 
         return super().form_valid(form)
 
-class MemberDetail(UpdateView, LoggedProfileMixin):
+
+class MemberDetail(UpdateView, UserAuthMixin):
     """
     View for displaying a member
     """
@@ -130,7 +131,7 @@ class MemberDetail(UpdateView, LoggedProfileMixin):
         return reverse('member:list', context)
 
 
-class MemberList(ListView, LoggedProfileMixin):
+class MemberList(ListView, UserAuthMixin):
     """
     View to list all members
     """

@@ -1,5 +1,6 @@
 from django import forms
 from django.db.models import Max
+from django.utils.translation import get_language
 from django.utils.translation import ugettext_lazy as _
 
 from django_countries.fields import LazyTypedChoiceField, countries
@@ -20,7 +21,11 @@ class NewMemberForm(forms.Form):
     )
     email = forms.EmailField(required=False)
     telephone = forms.CharField(max_length=20, required=False)
-    status = forms.ModelChoiceField(queryset=MemberStatus.objects.filter(initial_status=True), required=False)
+    status = forms.ModelChoiceField(
+        queryset=MemberStatus.objects.filter(
+            initial_status=True,
+            language=get_language()[2]), 
+        required=False)
     picture = forms.ImageField()
     nationality = LazyTypedChoiceField(choices=countries)
 
