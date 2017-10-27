@@ -27,7 +27,7 @@ class MemberStatus(models.Model):
         ('F', _('Final'))
     )
 
-    language = models.CharField(max_length=2)
+    language = models.CharField(max_length=5)
     status_code = models.CharField(max_length=3)
     status_text = models.CharField(max_length=80)
     initial_status = models.BooleanField(default=True)

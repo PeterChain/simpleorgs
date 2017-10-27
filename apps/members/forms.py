@@ -24,7 +24,7 @@ class NewMemberForm(forms.Form):
     status = forms.ModelChoiceField(
         queryset=MemberStatus.objects.filter(
             initial_status=True,
-            language=get_language()[2]), 
+            language=get_language()), 
         required=False)
     picture = forms.ImageField()
     nationality = LazyTypedChoiceField(choices=countries)
